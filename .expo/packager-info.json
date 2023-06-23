@@ -1,0 +1,9 @@
+{
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "expoServerNgrokUrl": "https://3c-cj3.anonymous.frontend.exp.direct",
+  "packagerNgrokUrl": "https://3c-cj3.anonymous.frontend.exp.direct",
+  "ngrokPid": 11708,
+  "packagerPid": null,
+  "webpackServerPort": null
+}
