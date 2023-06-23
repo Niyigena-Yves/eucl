@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -19,7 +20,7 @@ connection.connect(err => {
     console.error('Error connecting to MySQL: ', err);
     return;
   }
-  console.log('Connected to MySQL database');
+  console.log('Connected to MySQL database...');
 });
 
 // Handle MySQL connection errors
@@ -28,7 +29,9 @@ connection.on('error', err => {
 });
 
 // Middleware
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
 // Generate a token
 app.post('/api/generateToken', (req, res) => {
@@ -125,7 +128,7 @@ app.get('/api/getTokens/:meterNumber', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port}...`);
 });
 
 // Helper function to generate an 8-digit token

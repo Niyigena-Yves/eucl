@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
+import axios from 'axios';
 
 const TokenGeneratorScreen = () => {
   const [amount, setAmount] = useState('');
@@ -7,20 +8,17 @@ const TokenGeneratorScreen = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/generateToken', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount,
-          meterNumber,
-        }),
+      const response = await axios.post('http://localhost:3000/api/generateToken', {
+        amount,
+        meterNumber,
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        Alert.alert('Token Generated', `Token: ${data.token}\nValidity Days: ${data.tokenValidityDays}`);
+      const data = response.data;
+      if (response.status === 200) {
+        Alert.alert(
+          'Token Generated',
+          `Token: ${data.token}\nValidity Days: ${data.tokenValidityDays}`
+        );
       } else {
         Alert.alert('Error', data.error);
       }

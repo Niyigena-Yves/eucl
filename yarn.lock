@@ -2641,6 +2641,11 @@ abort-controller@^3.0.0:
   dependencies:
     event-target-shim "^5.0.0"
 
+abortcontroller-polyfill@^1.7.3:
+  version "1.7.5"
+  resolved "https://registry.npmjs.org/abortcontroller-polyfill/-/abortcontroller-polyfill-1.7.5.tgz"
+  integrity sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==
+
 absolute-path@^0.0.0:
   version "0.0.0"
   resolved "https://registry.npmjs.org/absolute-path/-/absolute-path-0.0.0.tgz"
@@ -8350,7 +8355,7 @@ prompts@^2.3.2, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@^15.7.2:
+prop-types@*, prop-types@^15.6.1, prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -8544,6 +8549,14 @@ react-native-codegen@^0.71.5:
     flow-parser "^0.185.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-fetch@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/react-native-fetch/-/react-native-fetch-2.0.0.tgz"
+  integrity sha512-oahN+dCP7OsagD+cmFXvUjS5erNYcxfPubsEi8ZoERH8YkZqXPG/V0myWNJCdkK4Gi1w0lWjLhK0yTfjF8PPYQ==
+  dependencies:
+    prop-types "^15.6.1"
+    tenacious-fetch "^2.0.0"
 
 "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@>= 1.5.0":
   version "2.12.0"
@@ -9873,6 +9886,14 @@ tempy@0.3.0:
     type-fest "^0.3.1"
     unique-string "^1.0.0"
 
+tenacious-fetch@^2.0.0:
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/tenacious-fetch/-/tenacious-fetch-2.3.1.tgz"
+  integrity sha512-POKK6c124yrVjKlwB3Ky9obkfP4tZHjTo8r7OVEYEwJCTeWoGfkfRuTU5Gt+yBgoSq7XUwsB8kyi7UQmsACYyQ==
+  dependencies:
+    abortcontroller-polyfill "^1.7.3"
+    whatwg-fetch "^3.6.2"
+
 terminal-link@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/terminal-link/-/terminal-link-2.1.1.tgz"
@@ -10471,7 +10492,7 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-whatwg-fetch@^3.0.0, whatwg-fetch@>=0.10.0:
+whatwg-fetch@^3.0.0, whatwg-fetch@^3.6.2, whatwg-fetch@>=0.10.0:
   version "3.6.2"
   resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz"
   integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==

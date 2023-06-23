@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, Alert } from 'react-native';
+import axios from 'axios';
 
 const HomeScreen = () => {
   const [amount, setAmount] = useState('');
@@ -10,48 +11,43 @@ const HomeScreen = () => {
   const handlePurchaseToken = () => {
     // Perform validation on the amount and meter number inputs
     if (!amount || !meterNumber) {
-      return alert('Amount and meter number are required');
+      return Alert.alert('Error', 'Amount and meter number are required');
     }
 
     if (!/^\d{6}$/.test(meterNumber)) {
-      return alert('Meter number should be 6 digits');
+      return Alert.alert('Error', 'Meter number should be 6 digits');
     }
 
     const amountNumber = parseInt(amount);
     if (isNaN(amountNumber) || amountNumber < 100) {
-      return alert('Amount should be at least 100 Rwf');
+      return Alert.alert('Error', 'Amount should be at least 100 Rwf');
     }
 
     const tokenValidityDays = Math.floor(amountNumber / 100);
     if (tokenValidityDays > 1825) {
-      return alert('Amount should not exceed 5 years (1825 days)');
+      return Alert.alert('Error', 'Amount should not exceed 5 years (1825 days)');
     }
 
-    // Call the API to generate a token
-    fetch('http://localhost:3000/api/generateToken', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    // Call the API to generate a token using axios
+    axios
+      .post('http://localhost:3000/generateToken', {
         amount,
         meterNumber,
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
+      })
+      .then(response => {
+        const data = response.data;
         setToken(data.token);
         setTokenValidityDays(data.tokenValidityDays);
       })
       .catch(error => {
         console.error('Error purchasing token:', error);
-        alert('An error occurred while purchasing the token');
+        Alert.alert('Error', 'An error occurred while purchasing the token');
       });
   };
 
   return (
     <View>
-      <Text>Welcome to the Home Screen!</Text>
+      <Text>Welcome EUCL System</Text>
       <Text>Purchase Electricity</Text>
       <TextInput
         placeholder="Amount (in Rwf)"
